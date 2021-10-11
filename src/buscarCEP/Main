@@ -1,0 +1,32 @@
+package buscarCEP;
+
+import java.util.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
+import buscarEndereco.Endereco;
+import conversaojava.ServicoDeCEP;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		String cep;
+
+		cep = JOptionPane.showInputDialog("Digite o cep:");
+
+		Endereco endereco = new Endereco();
+		endereco = ServicoDeCEP.buscaEnderecoPelo(cep);
+
+		ImageIcon icon = new ImageIcon("img/logo3.jpg");
+
+		JOptionPane.showMessageDialog(null,
+				"CEP: " + cep + "\n" + "Logradouro: " + endereco.getLogradouro() + "\n" + "Complemento: "
+						+ endereco.getComplemento() + "\n" + "Bairro: " + endereco.getBairro() + "\n" + "Localidade: "
+						+ endereco.getLocalidade() + "\n" + "UF: " + endereco.getUf() + "\n" + "DDD: "
+						+ endereco.getDdd(),
+				"Dados CEP", JOptionPane.INFORMATION_MESSAGE, icon);
+
+	}
+
+}
